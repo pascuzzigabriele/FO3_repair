@@ -388,7 +388,7 @@ jobs:
           $msbuild = & $vswhere -latest -products * -requires Microsoft.Component.MSBuild -find 'MSBuild\**\Bin\MSBuild.exe' | Select-Object -First 1
           if (-not $msbuild) { throw 'MSBuild not found on runner.' }
           $solution = Join-Path $env:GITHUB_WORKSPACE 'FOSE-Plugins\fose_plugins\ez_fose_plugin_example\ez_fose_plugin_example.sln'
-          & $msbuild $solution /m /p:Configuration=Release /p:Platform=Win32
+          & $msbuild $solution /m /p:Configuration=Release /p:Platform=x86
           if ($LASTEXITCODE -ne 0) { throw "MSBuild failed with exit code $LASTEXITCODE" }
 
       - name: Assemble installable mod
